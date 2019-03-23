@@ -1,0 +1,63 @@
+{
+  "name": "concordialang-codeceptjs-webdriverio",
+  "version": "1.0.0",
+  "description": "Concordia Language plug-in to generate test scripts for CodeceptJS with WebDriverIO",
+  "license": "AGPL-3.0",
+  "readme": "readme.md",
+  "homepage": "https://github.com/thiagodp/concordialang-codeceptjs-webdriverio#readme",
+  "author": {
+    "name": "Thiago Delgado Pinto",
+    "email": "thiago-dp@bol.com.br"
+  },
+  "keywords": [
+    "concordialang",
+    "concordia-lang",
+    "concordia",
+    "codeceptjs",
+    "webdriverio",
+    "test",
+    "script",
+    "e2e",
+    "plugin",
+    "plug-in"
+  ],
+  "files": [
+    "dist/*"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "postversion": "git push && git push --tags"
+  },
+  "jest": {
+    "transform": {
+      ".(ts|tsx)": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thiagodp/concordialang-codeceptjs-webdriverio.git"
+  },
+  "bugs": {
+    "url": "https://github.com/thiagodp/concordialang-codeceptjs-webdriverio/issues"
+  },
+  "dependencies": {
+    "figures": "^2.0.0",
+    "log-symbols": "^2.2.0",
+    "mustache": "^2.3.0",
+    "node-fs-extra": "^0.8.2"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.11",
+    "jest": "^24.5.0",
+    "ts-jest": "^24.0.0",
+    "typescript": "^3.3.4000",
+    "memfs": "^2.9.0"
+  }
+}
