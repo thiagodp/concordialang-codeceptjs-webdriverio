@@ -1,6 +1,6 @@
-import { ATSCommand } from "../../../modules/testscript/AbstractTestScript";
-import { CommandMapper } from "../src/CommandMapper";
-import { CODECEPTJS_COMMANDS } from "../src/Commands";
+import { ATSCommand } from 'concordialang-types/dist/testscript/AbstractTestScript';
+import { CommandMapper } from '../src/CommandMapper';
+import { CODECEPTJS_COMMANDS } from '../src/Commands';
 
 /**
  * @author Thiago Delgado Pinto

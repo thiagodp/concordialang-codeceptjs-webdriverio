@@ -1,4 +1,4 @@
-import { AbstractTestScript } from '../../../modules/testscript/AbstractTestScript';
+import { AbstractTestScript } from 'concordialang-types/dist/testscript/AbstractTestScript';
 import { TestScriptGenerator } from "../src/TestScriptGenerator";
 import { CommandMapper } from '../src/CommandMapper';
 import { CODECEPTJS_COMMANDS } from '../src/Commands';

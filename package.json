@@ -53,7 +53,8 @@
     "figures": "^2.0.0",
     "log-symbols": "^2.2.0",
     "mustache": "^2.3.0",
-    "node-fs-extra": "^0.8.2"
+    "node-fs-extra": "^0.8.2",
+    "dedent-js": "^1.0.1"
   },
   "devDependencies": {
     "@types/jest": "^24.0.11",

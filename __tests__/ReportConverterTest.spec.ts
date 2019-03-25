@@ -1,6 +1,6 @@
 import { join, normalize } from 'path';
 import { vol, fs as memfs } from 'memfs';
-import { TestScriptExecutionResult, TestSuiteResult, TestMethodResult } from '../../../modules/testscript/TestScriptExecution';
+import { TestScriptExecutionResult, TestSuiteResult, TestMethodResult } from 'concordialang-types/dist/testscript/TestScriptExecution';
 import { ReportConverter } from '../src/ReportConverter';
 
 /**
