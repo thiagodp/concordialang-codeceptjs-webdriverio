@@ -1,17 +1,19 @@
+import * as fs from 'fs';
+import { join, parse } from 'path';
+import { promisify } from 'util';
+import * as fse from 'node-fs-extra';
+
 import { TestScriptExecutor } from './TestScriptExecutor';
 import { TestScriptGenerator } from './TestScriptGenerator';
 import { ReportConverter } from './ReportConverter';
-import { Plugin } from '../../modules/plugin/Plugin';
-import { AbstractTestScript } from '../../modules/testscript/AbstractTestScript';
-import { TestScriptGenerationOptions } from '../../modules/testscript/TestScriptOptions';
-import { TestScriptExecutionOptions, TestScriptExecutionResult } from '../../modules/testscript/TestScriptExecution';
-import { promisify } from 'util';
+import { Plugin } from 'concordialang-plugin/dist/Plugin';
+import { AbstractTestScript } from 'concordialang-types/dist/testscript/AbstractTestScript';
+import { TestScriptGenerationOptions } from 'concordialang-types/dist/testscript/TestScriptOptions';
+import { TestScriptExecutionOptions, TestScriptExecutionResult } from 'concordialang-types/dist/testscript/TestScriptExecution';
 import { CommandMapper } from './CommandMapper';
 import { ConfigMaker } from './ConfigMaker';
 import { CODECEPTJS_COMMANDS } from './Commands';
-import * as fs from 'fs';
-import { join, parse } from 'path';
-import * as fse from 'node-fs-extra';
+
 
 /**
  * Plugin for CodeceptJS.

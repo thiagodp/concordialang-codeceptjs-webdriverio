@@ -1,4 +1,4 @@
-import { AbstractTestScript, ATSCommand } from '../../modules/testscript/AbstractTestScript';
+import { AbstractTestScript, ATSCommand } from 'concordialang-types/dist/testscript/AbstractTestScript';
 import { CommandMapper } from "./CommandMapper";
 /**
  * Generate test scripts for CodeceptJS.

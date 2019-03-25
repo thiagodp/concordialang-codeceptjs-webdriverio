@@ -1,4 +1,4 @@
-import { ATSCommand } from "../../modules/testscript/AbstractTestScript";
+import { ATSCommand } from "concordialang-types/dist/testscript/AbstractTestScript";
 /**
  * Command comparison
  *

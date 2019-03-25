@@ -48,6 +48,8 @@
     "url": "https://github.com/thiagodp/concordialang-codeceptjs-webdriverio/issues"
   },
   "dependencies": {
+    "concordialang-plugin": "^0.3.0",
+    "concordialang-types": "^0.1.0",
     "figures": "^2.0.0",
     "log-symbols": "^2.2.0",
     "mustache": "^2.3.0",

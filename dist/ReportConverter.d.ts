@@ -1,5 +1,5 @@
-import { TestScriptExecutionResult } from '../../modules/testscript/TestScriptExecution';
-import { Location } from '../../modules/ast/Location';
+import { TestScriptExecutionResult } from 'concordialang-types/dist/testscript/TestScriptExecution';
+import { Location } from 'concordialang-types/dist/ast/Location';
 /**
  * Converts a Mocha Multi Report to Concordia's format.
  *

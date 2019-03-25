@@ -8,11 +8,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const TestScriptExecution_1 = require("../../modules/testscript/TestScriptExecution");
-const InstrumentationReader_1 = require("../../modules/plugin/InstrumentationReader");
 const fs = require("fs");
 const util_1 = require("util");
-const FileInstrumentationReader_1 = require("../../modules/plugin/FileInstrumentationReader");
+const TestScriptExecution_1 = require("concordialang-types/dist/testscript/TestScriptExecution");
+const InstrumentationReader_1 = require("concordialang-plugin/dist/InstrumentationReader");
+const FileInstrumentationReader_1 = require("concordialang-plugin/dist/FileInstrumentationReader");
 /**
  * Converts a Mocha Multi Report to Concordia's format.
  *
