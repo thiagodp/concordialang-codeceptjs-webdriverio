@@ -1,6 +1,5 @@
 import * as fs from 'fs';
 import { promisify } from 'util';
-
 import { TestMethodResult, TestScriptExecutionResult, TestSuiteResult, TotalExecutionResult } from 'concordialang-types/dist/testscript/TestScriptExecution';
 import { DefaultInstrumentationReader } from 'concordialang-plugin/dist/InstrumentationReader';
 import { Location } from 'concordialang-types/dist/ast/Location';

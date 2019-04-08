@@ -5,7 +5,6 @@ import { promisify } from 'util';
 import { writeFile, access, constants, readFile } from 'fs';
 import chalk from 'chalk';
 import { arrowRight, info, cross, warning } from 'figures';
-
 import { TestScriptExecutionOptions } from 'concordialang-types/dist/testscript/TestScriptExecution';
 import { ConfigMaker } from './ConfigMaker';
 

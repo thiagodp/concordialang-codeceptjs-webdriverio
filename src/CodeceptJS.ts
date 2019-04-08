@@ -2,7 +2,6 @@ import * as fs from 'fs';
 import { join, parse } from 'path';
 import { promisify } from 'util';
 import * as fse from 'node-fs-extra';
-
 import { TestScriptExecutor } from './TestScriptExecutor';
 import { TestScriptGenerator } from './TestScriptGenerator';
 import { ReportConverter } from './ReportConverter';
