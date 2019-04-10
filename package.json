@@ -9,23 +9,33 @@
     "name": "Thiago Delgado Pinto",
     "email": "thiago-dp@bol.com.br"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thiagodp/concordialang-codeceptjs-webdriverio.git"
+  },
+  "bugs": {
+    "url": "https://github.com/thiagodp/concordialang-codeceptjs-webdriverio/issues"
+  },
   "keywords": [
     "concordialang",
     "concordia-lang",
     "concordia",
     "codeceptjs",
     "webdriverio",
+    "selenium",
     "test",
     "script",
     "e2e",
     "plugin",
     "plug-in"
   ],
+  "main": "dist",
+  "types": "dist",
   "files": [
     "dist/*"
   ],
   "scripts": {
-    "build": "tsc",
+    "build": "rimraf dist && tsc",
     "test": "jest",
     "postversion": "git push && git push --tags"
   },
@@ -40,27 +50,33 @@
       "js"
     ]
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/thiagodp/concordialang-codeceptjs-webdriverio.git"
-  },
-  "bugs": {
-    "url": "https://github.com/thiagodp/concordialang-codeceptjs-webdriverio/issues"
+  "concordiaPlugin": {
+    "isFake": false,
+    "targets": [
+      "codeceptjs",
+      "webdriverio"
+    ],
+    "file": "dist/CodeceptJS.js",
+    "class": "CodeceptJS",
+    "install": "npm install -g codeceptjs@1.2.1 webdriverio@v4.14.0 selenium-standalone && selenium-standalone install",
+    "uninstall": "npm uninstall -g codeceptjs webdriverio selenium-standalone",
+    "serve": "selenium-standalone start"
   },
   "dependencies": {
-    "concordialang-plugin": "^0.3.0",
-    "concordialang-types": "^0.1.0",
+    "concordialang-plugin": "^0.3.5",
+    "concordialang-types": "^0.1.4",
+    "dedent-js": "^1.0.1",
     "figures": "^2.0.0",
     "log-symbols": "^2.2.0",
     "mustache": "^2.3.0",
-    "node-fs-extra": "^0.8.2",
-    "dedent-js": "^1.0.1"
+    "node-fs-extra": "^0.8.2"
   },
   "devDependencies": {
     "@types/jest": "^24.0.11",
     "jest": "^24.5.0",
+    "memfs": "^2.9.0",
+    "rimraf": "^2.6.3",
     "ts-jest": "^24.0.0",
-    "typescript": "^3.3.4000",
-    "memfs": "^2.9.0"
+    "typescript": "^3.3.4000"
   }
 }

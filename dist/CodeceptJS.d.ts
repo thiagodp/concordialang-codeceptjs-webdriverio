@@ -1,9 +1,7 @@
+import { AbstractTestScript, TestScriptGenerationOptions, TestScriptExecutionOptions, TestScriptExecutionResult } from 'concordialang-types';
+import { Plugin } from 'concordialang-plugin';
 import { TestScriptExecutor } from './TestScriptExecutor';
 import { TestScriptGenerator } from './TestScriptGenerator';
-import { Plugin } from 'concordialang-plugin/dist/Plugin';
-import { AbstractTestScript } from 'concordialang-types/dist/testscript/AbstractTestScript';
-import { TestScriptGenerationOptions } from 'concordialang-types/dist/testscript/TestScriptOptions';
-import { TestScriptExecutionOptions, TestScriptExecutionResult } from 'concordialang-types/dist/testscript/TestScriptExecution';
 /**
  * Plugin for CodeceptJS.
  */

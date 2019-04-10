@@ -1,9 +1,7 @@
 import * as fs from 'fs';
 import { promisify } from 'util';
-import { TestMethodResult, TestScriptExecutionResult, TestSuiteResult, TotalExecutionResult } from 'concordialang-types/dist/testscript/TestScriptExecution';
-import { DefaultInstrumentationReader } from 'concordialang-plugin/dist/InstrumentationReader';
-import { Location } from 'concordialang-types/dist/ast/Location';
-import { FileInstrumentationReader } from 'concordialang-plugin/dist/FileInstrumentationReader';
+import { TestMethodResult, TestScriptExecutionResult, TestSuiteResult, TotalExecutionResult, Location } from 'concordialang-types';
+import { FileInstrumentationReader, DefaultInstrumentationReader } from 'concordialang-plugin';
 
 /**
  * Converts a Mocha Multi Report to Concordia's format.
