@@ -58,7 +58,7 @@
     ],
     "file": "dist/CodeceptJS.js",
     "class": "CodeceptJS",
-    "install": "npm install -g codeceptjs@1.2.1 mocha@v5.2.0 mocha-multi@v1.1.0 webdriverio@v4.14.0 selenium-standalone && selenium-standalone install",
+    "install": "npm install -g codeceptjs@1.2.1 mocha@v5.2.0 mocha-multi@v1.0.1 webdriverio@v4.14.0 selenium-standalone && selenium-standalone install",
     "uninstall": "npm uninstall -g codeceptjs webdriverio selenium-standalone",
     "serve": "selenium-standalone start"
   },
