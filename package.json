@@ -58,8 +58,8 @@
     ],
     "file": "dist/CodeceptJS.js",
     "class": "CodeceptJS",
-    "install": "npm install --color=always -g codeceptjs@1.2.1 mocha@v5.2.0 mocha-multi@v1.0.1 webdriverio@v4.14.0 selenium-standalone && selenium-standalone install",
-    "uninstall": "npm uninstall --color=always -g codeceptjs mocha mocha-multi webdriverio selenium-standalone",
+    "install": "npm install --color=always --save-dev mocha@v5.2.0 mocha-multi@v1.0.1 && npm install --color=always -g codeceptjs@1.2.1 webdriverio@v4.14.0 selenium-standalone && selenium-standalone install",
+    "uninstall": "npm uninstall --color=always --save-dev mocha@v5.2.0 mocha-multi@v1.0.1 && npm uninstall --color=always -g codeceptjs webdriverio selenium-standalone",
     "serve": "selenium-standalone start"
   },
   "dependencies": {
