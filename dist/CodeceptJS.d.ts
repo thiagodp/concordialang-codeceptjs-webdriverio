@@ -23,6 +23,8 @@ export declare class CodeceptJS implements Plugin {
     executeCode(options: TestScriptExecutionOptions): Promise<TestScriptExecutionResult>;
     /** @inheritDoc */
     convertReportFile(filePath: string): Promise<TestScriptExecutionResult>;
+    /** @inheritDoc */
+    defaultReportFile(): Promise<string>;
     /**
      * Tries to generate a source code file from an abstract test script.
      *

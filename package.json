@@ -63,7 +63,7 @@
     "serve": "selenium-standalone start"
   },
   "dependencies": {
-    "concordialang-plugin": "^0.3.5",
+    "concordialang-plugin": "^0.4.0",
     "concordialang-types": "^0.1.4",
     "dedent-js": "^1.0.1",
     "figures": "^2.0.0",
