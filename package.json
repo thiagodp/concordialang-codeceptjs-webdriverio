@@ -63,6 +63,7 @@
     "serve": "selenium-standalone start"
   },
   "dependencies": {
+    "chalk": "^2.4.2",
     "concordialang-plugin": "^0.4.0",
     "concordialang-types": "^0.1.4",
     "dedent-js": "^1.0.1",
