@@ -7,21 +7,16 @@ Generates and executes test scripts for **web applications**. Uses [CodeceptJS](
 ## 💿 Installation
 
 Before installing:
-- Make sure you have Concordia `1.0.0` or above.
-- Make sure you have [Java 8 or above](https://www.java.com/download/) installed.  WebDriverIO needs it because of Selenium.
+- Make sure you have [Concordia](https://github.com/thiagodp/concordialang) `1.0.0` or above.
+- Make sure you have [Java 8 or above](https://www.java.com/download/) installed.  WebDriverIO needs Java because of Selenium.
 - Go to your applications' root folder.
 
-Installation via [Concordia Compiler](https://github.com/thiagodp/concordialang):
+Installation:
 
 ```bash
 concordia --plugin-install codeceptjs-webdriverio
 ```
 
-Installation via NPM:
-
-```bash
-npm install --save-dev concordialang-codeceptjs-webdriverio
-```
 ### Optional installation
 
 You can install additional packages **when needed**, via NPM.
@@ -43,7 +38,7 @@ The following **database drivers** allow you to connect to a certain database ty
 
 ### You may like to install
 
-- [Katalon Concordia extension for Chrome and Firefox](https://github.com/thiagodp/katalon-concordia) converts test scripts recorded with [Katalon Recorder](https://chrome.google.com/webstore/detail/katalon-recorder-selenium/ljdobmomdgdljniojadhoplhkpialdid) into Concordia Language. It's *very useful* to capture all the web elements' identifications.
+- [Katalon Concordia extension for Chrome and Firefox](https://github.com/thiagodp/katalon-concordia): converts test scripts recorded with [Katalon Recorder](https://chrome.google.com/webstore/detail/katalon-recorder-selenium/ljdobmomdgdljniojadhoplhkpialdid) into Concordia Language. It's *very useful* to capture all the web elements' identifications.
 
 
 ## 🚀 Execution
