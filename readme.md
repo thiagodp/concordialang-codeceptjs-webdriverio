@@ -1,3 +1,8 @@
+[![Build Status](https://travis-ci.org/thiagodp/concordialang-codeceptjs-webdriverio.svg?branch=master)](https://travis-ci.org/thiagodp/concordialang-codeceptjs-webdriverio)
+[![npm version](https://badge.fury.io/js/concordialang-codeceptjs-webdriverio.svg)](https://badge.fury.io/js/concordialang-codeceptjs-webdriverio)
+[![GitHub last commit](https://img.shields.io/github/last-commit/thiagodp/concordialang-codeceptjs-webdriverio.svg)](https://github.com/thiagodp/concordialang-codeceptjs-webdriverio/releases)
+
+
 # concordialang-codeceptjs-webdriverio
 
 > 🔌 Concordia Compiler Plug-in for CodeceptJS with WebDriverIO
@@ -155,7 +160,7 @@ Installed in `package.json`'s `devDependencies`:
 
 #### Actions
 
-The following table lists the support to the [Concordia Language Actions](https://github.com/thiagodp/concordialang/tree/master/docs/en/actions.md). **The corresponding CodeceptJS commands work with both WebDriverIO and Appium**.
+The following table lists the support to the [Concordia Language Actions](https://github.com/thiagodp/concordialang-codeceptjs-webdriverio/tree/master/docs/en/actions.md). **The corresponding CodeceptJS commands work with both WebDriverIO and Appium**.
 
 *Note*: A tick (✓) means "*checked with a unit test*".
 
