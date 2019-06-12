@@ -1,6 +1,6 @@
 {
   "name": "concordialang-codeceptjs-webdriverio",
-  "version": "0.4.2",
+  "version": "1.0.0-alpha",
   "description": "Concordia Language plug-in to generate test scripts for CodeceptJS with WebDriverIO",
   "license": "AGPL-3.0",
   "readme": "readme.md",
@@ -53,7 +53,10 @@
   },
   "concordiaPlugin": {
     "isFake": false,
-    "targets": [ "codeceptjs", "webdriverio" ],
+    "targets": [
+      "codeceptjs",
+      "webdriverio"
+    ],
     "file": "dist/CodeceptJS.js",
     "class": "CodeceptJS",
     "serve": "npx selenium-standalone start"
