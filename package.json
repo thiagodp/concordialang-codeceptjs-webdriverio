@@ -38,7 +38,7 @@
     "build": "rimraf dist && tsc",
     "test": "jest",
     "postversion": "git push && git push --tags",
-    "postinstall": "((npm list -g npx) || (npm i --color=always -g npx)) && npx selenium-standalone install && echo \"TO SUPPORT MORE DATABASES IN YOUR TESTS, PLEASE SEE https://github.com/thiagodp/concordialang-codeceptjs-webdriverio\" "
+    "postinstall": "((npm list -g npx) || (npm i --color=always -g npx)) && npx selenium-standalone install && node dist/postinstall.js"
   },
   "jest": {
     "transform": {

@@ -9,12 +9,18 @@ Generates and executes test scripts for **web applications**. Uses [CodeceptJS](
 Before installing:
 - Make sure you have [Concordia](https://github.com/thiagodp/concordialang) `1.0.0` or above.
 - Make sure you have [Java 8 or above](https://www.java.com/download/) installed.  WebDriverIO needs Java because of Selenium.
-- Go to your applications' root folder.
+- Go to your applications' root folder via console/terminal for typing the installation command.
 
-Installation:
+Installation via [Concordia](https://github.com/thiagodp/concordialang):
 
 ```bash
 concordia --plugin-install codeceptjs-webdriverio
+```
+
+Installation via NPM:
+
+```bash
+npm install --save-dev concordialang-codeceptjs-webdriverio
 ```
 
 ### Optional installation
@@ -47,11 +53,11 @@ A plug-in is only executed with the [Concordia Compiler](https://github.com/thia
 
 ### Generated configuration file
 
-Concordia Compiler uses plug-ins to generate a basic configuration file for the target testing framework. Plugins for CodeceptJS usually generate `codeceptjs.json`.
+A Concordia Compiler plug-in must generate a basic configuration file for the target testing framework.
 
-#### Version 0.x
+#### Versions 0.x and 1.x
 
-Version `0.x` generates `codecept.json` with the following content:
+Versions `0.x` and `1.x` generate the file `codecept.json` with the following content:
 
 ```json
 {
@@ -92,7 +98,23 @@ Version `0.x` generates `codecept.json` with the following content:
 }
 ```
 
+The above file is compatible with CodeceptJS `1.2.1`, and probably any version in `1.x`.
+
+#### Tips
+
+- You can change the value of the property `url` to your application's URL, *e.g.*, `"http://localhost/myapp"`.
+- You can change the value of the property `browser` to the desired browser to test, *e.g.", `"firefox"`.
+- See https://codecept.io/helpers/WebDriverIO/ for more options.
+
+
 ## 📖 Documentation
+
+### Packages installed by version 1.x
+
+- No packages are installed globally.
+- Dependencies are installed in `node_modules`, without any changes to `package.json`.
+- All the same dependencies as version `0.x`.
+
 
 ### Packages installed by version 0.x
 
