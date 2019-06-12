@@ -23,26 +23,26 @@ export class ConfigMaker {
             "helpers": {},
             "bootstrap": false,
             "mocha": {
-                reporterOptions: {
+                "reporterOptions": {
 
                     "codeceptjs-cli-reporter": {
-                        stdout: "-",
-                        options: {
-                            steps: true
+                        "stdout": "-",
+                        "options": {
+                            "steps": true
                         }
                     },
 
                     "json": {
-                        stdout: join( output, outputFile )
+                        "stdout": join( output, outputFile )
                     }
 
                     // "mochawesome": {
-                    //     stdout: "-",
-                    //     options: {
-                    //         reportDir: output,
-                    //         reportFilename: "report",
-                    //         uniqueScreenshotNames: true,
-                    //         timestamp: true
+                    //     "stdout": "-",
+                    //     "options": {
+                    //         "reportDir": output,
+                    //         "reportFilename": "report",
+                    //         "uniqueScreenshotNames": true,
+                    //         "timestamp": true
                     //     }
                     // },
                 }
@@ -64,11 +64,11 @@ export class ConfigMaker {
     ) {
         let helpers = this.ensureHelpersProperty( config );
         helpers[ "WebDriverIO" ] = {
-            browser: browser,
-            url: url,
-            windowSize: "maximize",
-            smartWait: 5000,
-            timeouts: {
+            "browser": browser,
+            "url": url,
+            "windowSize": "maximize",
+            "smartWait": 5000,
+            "timeouts": {
                 "script": 60000,
                 "page load": 10000
             }
@@ -91,9 +91,9 @@ export class ConfigMaker {
     ) {
         let helpers = this.ensureHelpersProperty( config );
         helpers[ "Appium" ] = {
-            plataform: plataform,
-            app: app,
-            device: device
+            "plataform": plataform,
+            "app": app,
+            "device": device
         };
     }
 
@@ -110,7 +110,7 @@ export class ConfigMaker {
         let helpers = this.ensureHelpersProperty( config );
         const property = this.getDbHelperProperty();
         helpers[ property ] = {
-            require: requireFile
+            "require": requireFile
         };
     }
 
@@ -143,7 +143,7 @@ export class ConfigMaker {
         let helpers = this.ensureHelpersProperty( config );
         const property = this.getCmdHelperProperty();
         helpers[ property ] = {
-            require: requireFile
+            "require": requireFile
         };
     }
 

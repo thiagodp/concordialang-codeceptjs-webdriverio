@@ -15,15 +15,15 @@ export declare class ConfigMaker {
         "helpers": {};
         "bootstrap": boolean;
         "mocha": {
-            reporterOptions: {
+            "reporterOptions": {
                 "codeceptjs-cli-reporter": {
-                    stdout: string;
-                    options: {
-                        steps: boolean;
+                    "stdout": string;
+                    "options": {
+                        "steps": boolean;
                     };
                 };
                 "json": {
-                    stdout: string;
+                    "stdout": string;
                 };
             };
         };

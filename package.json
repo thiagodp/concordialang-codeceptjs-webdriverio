@@ -4,7 +4,7 @@
   "description": "Concordia Language plug-in to generate test scripts for CodeceptJS with WebDriverIO",
   "license": "AGPL-3.0",
   "readme": "readme.md",
-  "homepage": "https://github.com/thiagodp/concordialang-codeceptjs-webdriverio#readme",
+  "homepage": "https://github.com/thiagodp/concordialang-codeceptjs-webdriverio",
   "author": {
     "name": "Thiago Delgado Pinto",
     "email": "thiago-dp@bol.com.br"
@@ -37,7 +37,8 @@
   "scripts": {
     "build": "rimraf dist && tsc",
     "test": "jest",
-    "postversion": "git push && git push --tags"
+    "postversion": "git push && git push --tags",
+    "postinstall": "((npm list -g npx) || (npm i --color=always -g npx)) && npx selenium-standalone install && echo \"TO SUPPORT MORE DATABASES IN YOUR TESTS, PLEASE SEE https://github.com/thiagodp/concordialang-codeceptjs-webdriverio\" "
   },
   "jest": {
     "transform": {
@@ -52,25 +53,29 @@
   },
   "concordiaPlugin": {
     "isFake": false,
-    "targets": [
-      "codeceptjs",
-      "webdriverio"
-    ],
+    "targets": [ "codeceptjs", "webdriverio" ],
     "file": "dist/CodeceptJS.js",
     "class": "CodeceptJS",
-    "install": "npm install --color=always --save-dev codeceptjs@1.2.1 mocha@v5.2.0 mocha-multi@v1.0.1 codeceptjs-cmdhelper codeceptjs-dbhelper database-js database-js-json && npm install --color=always -g codeceptjs@1.2.1 webdriverio@v4.14.0 selenium-standalone && selenium-standalone install",
-    "uninstall": "npm uninstall --color=always --save-dev codeceptjs mocha mocha-multi codeceptjs-cmdhelper codeceptjs-dbhelper database-js database-js-json && npm uninstall --color=always -g codeceptjs webdriverio selenium-standalone",
-    "serve": "selenium-standalone start"
+    "serve": "npx selenium-standalone start"
   },
   "dependencies": {
     "chalk": "^2.4.2",
+    "codeceptjs": "^1.4.6",
+    "codeceptjs-cmdhelper": "^2.2.0",
+    "codeceptjs-dbhelper": "^1.0.0",
     "concordialang-plugin": "^0.4.0",
     "concordialang-types": "^0.1.4",
+    "database-js": "^3.0.9",
+    "database-js-json": "^1.2.1",
     "dedent-js": "^1.0.1",
     "figures": "^2.0.0",
     "log-symbols": "^2.2.0",
+    "mocha": "=5.2.0",
+    "mocha-multi": "=1.0.1",
     "mustache": "^2.3.0",
-    "node-fs-extra": "^0.8.2"
+    "node-fs-extra": "^0.8.2",
+    "selenium-standalone": "^6.16.0",
+    "webdriverio": "=4.14.0"
   },
   "devDependencies": {
     "@types/jest": "^24.0.11",

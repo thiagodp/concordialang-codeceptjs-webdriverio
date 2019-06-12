@@ -12,6 +12,7 @@ export declare class TestScriptExecutor {
      */
     execute(options: TestScriptExecutionOptions): Promise<string>;
     private fileExists;
+    assureConfigurationFile(executionPath: string): Promise<boolean>;
     private runCommand;
     private write;
 }

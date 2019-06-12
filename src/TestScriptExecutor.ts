@@ -1,10 +1,10 @@
 import * as path  from "path";
-import * as fse from 'node-fs-extra';
 import * as childProcess from 'child_process';
 import { promisify } from 'util';
 import { writeFile, access, constants, readFile } from 'fs';
 import chalk from 'chalk';
 import { arrowRight, info, cross, warning } from 'figures';
+import * as fse from 'node-fs-extra';
 import { TestScriptExecutionOptions } from 'concordialang-types';
 import { ConfigMaker } from './ConfigMaker';
 
@@ -26,222 +26,46 @@ export class TestScriptExecutor {
     public async execute( options: TestScriptExecutionOptions ): Promise< string > {
 
         const iconInfo = chalk.blueBright( info );
-        const iconArrow = chalk.yellow( arrowRight );
-        const iconError = chalk.redBright( cross );
         const iconWarning = chalk.yellow( warning );
-
         const textColor = chalk.cyanBright;
         const textCommand = chalk.cyan;
         const highlight = chalk.yellowBright;
 
+        // Creates the source code dir if it does not exist
         if ( !! options.sourceCodeDir ) {
             fse.mkdirs( options.sourceCodeDir );
         }
 
+        // Creates the execution result/output dir if it does not exist
         if ( !! options.executionResultDir ) {
             fse.mkdirs( options.executionResultDir );
         }
 
         const executionPath = process.cwd();
-        const cfgMaker = new ConfigMaker();
-        const writeF = promisify( writeFile );
 
-        // About codeceptj.json ------------------------------------------------
+        // codecept.json -------------------------------------------------------
 
-        const CONFIG_FILE_NAME = 'codecept.json';
-        const configFilePath = path.join( executionPath, CONFIG_FILE_NAME );
+        await this.assureConfigurationFile( executionPath );
 
-        let configFileExists: boolean = await this.fileExists( configFilePath );
-        // if ( ! configFileExists ) {
-        //     // await this.runCommand( 'codeceptjs init' );
-        //     try {
-        //         const cmd = 'codeceptjs init';
-        //         this.write( '  PLUGIN: No CodeceptJS configuration found. Let\'s make one!' );
-        //         this.write( '  PLUGIN:', cmd );
-        //         childProcess.execSync( cmd, { stdio: [ 0, 1, 2 ] } );
-        //     } catch ( e ) {
-        //         console.error( '  PLUGIN:', e.message );
-        //     }
-        // }
-        // configFileExists = await this.fileExists( configFilePath );
+        // Run CodeceptJS -------------------------------------------------------
 
-        // It's only possible to run CodeceptJS if there is a config file
-        if ( ! configFileExists ) {
-
-            try {
-                await writeF( configFilePath, JSON.stringify( this._defaultConfig, undefined, "\t" ) );
-
-                this.write( iconInfo, textColor( 'Generated configuration file' ), highlight( configFilePath ) );
-                this.write( arrowRight, textColor( 'If this file does not work for you, delete it and then run:' ) );
-                this.write( textColor( '  codeceptjs init' ) );
-            } catch ( e ) {
-                this.write( iconError, textColor( 'Could not generate' ), highlight( configFilePath ) + '.', textColor( 'Please run the following command:' ) );
-                this.write( textColor( '  codeceptjs init' ) );
-            }
-
-        } else {
-
-            // Let's check needed dependencies
-            let config = {};
-            let hadReadError: boolean = false;
-            try {
-                const readF = promisify( readFile );
-                const content = await readF( configFilePath );
-                config = JSON.parse( content.toString() );
-
-                this.write( iconInfo, textColor( 'Read' ), highlight( configFilePath ) );
-            } catch ( e ) {
-                hadReadError = true;
-                this.write( iconError, textColor( 'Could not read' ), highlight( configFilePath ) );
-            }
-
-            if ( ! hadReadError ) {
-
-                let needsToWriteConfig: boolean = ! cfgMaker.hasHelpersProperty( config );
-
-                if ( ! cfgMaker.hasCmdHelper( config ) ) {
-                    cfgMaker.setCmdHelper( config );
-                    needsToWriteConfig = true;
-                }
-
-                if ( ! cfgMaker.hasDbHelper( config ) ) {
-                    cfgMaker.setDbHelper( config );
-                    needsToWriteConfig = true;
-                }
-
-                if ( needsToWriteConfig ) {
-                    try {
-                        await writeF( configFilePath, JSON.stringify( config ) );
-                        this.write( iconInfo, textColor( 'Updated configuration file' ), highlight( configFilePath ) );
-                    } catch ( e ) {
-                        this.write( iconError, textColor( 'Error updating configuration file' ), highlight( configFilePath ) + '. Please check if it has DbHelper and CmdHelper configured.' );
-                    }
-                }
-            }
-
+        let filter: string = '';
+        if ( options && options.filter ) {
+            filter = options.filter.scenarioName || options.filter.featureName || '';
         }
 
-        // About package.json --------------------------------------------------
+        const command: string = filter
+            ? `npx codeceptjs run --grep ${filter} --reporter mocha-multi --colors || echo .`
+            : 'npx codeceptjs run --reporter mocha-multi --colors || echo .';
 
-        const PROJECT_FILE_NAME = 'package.json';
-        const packageFilePath = path.join( executionPath, PROJECT_FILE_NAME );
+        this.write( iconInfo, textColor( 'Running tests...' ) );
+        this.write( ' ', textCommand( command ) );
+        const code: number = await this.runCommand( command );
 
-        let showOptionalPackages: boolean = false;
-        const packageFileExists: boolean = await this.fileExists( packageFilePath );
-
-        const neededPackages = [
-            'mocha',
-            'mocha-multi',
-            'codeceptjs',
-            'codeceptjs-cmdhelper',
-            'codeceptjs-dbhelper',
-            'database-js',
-            'database-js-json'
-        ];
-
-        let hasCodeceptScriptInPackage: boolean = false;
-
-        // Creating package.json if it does not exist
-
-        if ( ! packageFileExists ) {
-            this.write( iconInfo, textColor( 'Creating' ), highlight( PROJECT_FILE_NAME ), textColor( 'with needed dependencies...' ) );
-            const cmd1 = 'npm init --yes';
-            this.write( ' ', textCommand( cmd1 ) );
-            await this.runCommand( cmd1 );
-            const cmd2 = 'npm install --save-dev ' + neededPackages.join( ' ' );
-            this.write( ' ', textCommand( cmd2 ) );
-            await this.runCommand( cmd2 );
-            showOptionalPackages = true;
-        }
-
-        // Reading package.json
-
-        let pkg = {};
-        try {
-            const readF = promisify( readFile );
-            const content = await readF( packageFilePath );
-            pkg = JSON.parse( content.toString() );
-        } catch ( e ) {
-            // Need to do nothing since pkg stay empty
-        }
-
-        // Evaluate property "devDependencies" of package.json
-
-        const DEV_DEPENDENCIES_PROPERTY = 'devDependencies';
-        const devDependencies = pkg[ DEV_DEPENDENCIES_PROPERTY ];
-        if ( ! devDependencies ) {
-            this.write( iconWarning, 'Could not read', highlight( packageFilePath ) + '.' );
-            this.write( iconArrow, 'Please check if it has the following packages in the property "' + highlight( DEV_DEPENDENCIES_PROPERTY ) + '":' );
-            neededPackages.forEach( v => this.write( '  ', v ) );
-            showOptionalPackages = true;
-        } else {
-            // Check needed packages
-            let packagesNotFound = [];
-            for ( let np of neededPackages ) {
-                if ( ! devDependencies[ np ] ) {
-                    packagesNotFound.push( np );
-                }
-            }
-            // Install the packages that were not found
-            if ( packagesNotFound.length > 0 ) {
-                this.write( iconInfo, textColor( 'Installing needed dependencies...' ) );
-                const cmd = 'npm install --save-dev ' + packagesNotFound.join( ' ' );
-                this.write( ' ', textCommand( cmd ) );
-                await this.runCommand( cmd );
-                showOptionalPackages = true;
-            }
-        }
-
-        // Evaluate property "scripts" of package.json
-
-        const SCRIPTS_PROPERTY = 'scripts';
-        const scripts = pkg[ SCRIPTS_PROPERTY ];
-        if ( ! scripts ) {
-            pkg[ SCRIPTS_PROPERTY ] = {};
-        }
-        const CODECEPTJS_SCRIPT_PROPERTY = 'concordia:codeceptjs';
-        const oldCommand1 = 'codeceptjs run --reporter mocha-multi --colors';
-        const oldCommand2 = 'codeceptjs run --reporter mocha-multi --colors || true';
-        if ( ! pkg[ SCRIPTS_PROPERTY ][ CODECEPTJS_SCRIPT_PROPERTY ] ||
-            oldCommand1 === pkg[ SCRIPTS_PROPERTY ][ CODECEPTJS_SCRIPT_PROPERTY ] ||
-            oldCommand2 === pkg[ SCRIPTS_PROPERTY ][ CODECEPTJS_SCRIPT_PROPERTY ]
-        ) {
-
-            pkg[ SCRIPTS_PROPERTY ][ CODECEPTJS_SCRIPT_PROPERTY ] = 'codeceptjs run --reporter mocha-multi --colors || echo .'
-
-            // Overwrite package.json
-            try {
-                await writeF( packageFilePath, JSON.stringify( pkg, undefined, "\t" ) );
-                hasCodeceptScriptInPackage = true;
-            } catch ( e ) {
-                this.write( iconError, 'Error: could not write package.json' );
-            }
-        } else {
-            hasCodeceptScriptInPackage = true;
-        }
-
-        // Show optional packages
-
-        if ( showOptionalPackages ) {
-            this.write( iconInfo, textColor( 'For supporting other databases, please run:' ) );
-            this.write( ' ', textColor( 'npm install --save-dev database-js-csv database-js-xlsx database-js-ini database-js-firebase database-js-mysql database-js-mssql database-js-postgres database-js-sqlite\n' ) );
-        }
-
-        // Run CodeceptJS ------------------------------------------------------
+        // Output file ----------------------------------------------------------
 
         const OUTPUT_FILE_NAME = 'output.json';
         const outputFilePath = path.join( options.executionResultDir || '.', OUTPUT_FILE_NAME );
-
-        this.write( iconInfo, textColor( 'Running tests...' ) );
-
-        const cmd = hasCodeceptScriptInPackage
-            ? 'npm run concordia:codeceptjs'
-            : `codeceptjs run --steps --reporter mocha-multi --config ${configFilePath} --colors`;
-
-        this.write( ' ', textCommand( cmd ) );
-        // const code = await this.runCommand( cmd );
-        await this.runCommand( cmd );
-
         this.write( iconInfo, textColor( 'Retrieving output file' ), highlight( outputFilePath ) + textColor( '...' ) );
 
         return outputFilePath;
@@ -259,26 +83,75 @@ export class TestScriptExecutor {
     }
 
 
-    // /**
-    //  * Generates a command that calls CodeceptJS and can be executed in a terminal.
-    //  *
-    //  * @param options Execution options
-    //  * @param outputFile Output file where test results will be written
-    //  * @throws Error
-    //  */
-    // public generateTestCommand( options: TestScriptExecutionOptions, outputFile: string ): string {
-    //     if ( ! options.sourceCodeDir ) {
-    //         throw new Error( 'Source code directory is missing!' );
-    //     }
-    //     if ( ! options.executionResultDir ) {
-    //         throw new Error( 'Execution result directory is missing!' );
-    //     }
-    //     const commandOptions: object = new CodeceptJSOptionsBuilder()
-    //         .withOutputFile( outputFile )
-    //         .value(); //TODO: Accept CodeceptJS options.
-    //     const optionsStr: string = this.escapeJson( JSON.stringify( commandOptions ) );
-    //     return `codeceptjs run --reporter mocha-multi --override "${optionsStr}" -c ${ options.sourceCodeDir } --colors`;
-    // }
+    public async assureConfigurationFile( executionPath: string ): Promise< boolean > {
+
+        const iconInfo = chalk.blueBright( info );
+        const iconError = chalk.redBright( cross );
+        const textColor = chalk.cyanBright;
+        const highlight = chalk.yellowBright;
+
+        const writeF = promisify( writeFile );
+
+        const codeceptJSConfigFile = path.join( executionPath, 'codecept.json' );
+        const configFileExists: boolean = await this.fileExists( codeceptJSConfigFile );
+
+        // It's only possible to run CodeceptJS if there is a config file
+        if ( ! configFileExists ) {
+
+            try {
+                await writeF( codeceptJSConfigFile, JSON.stringify( this._defaultConfig, undefined, "\t" ) );
+
+                this.write( iconInfo, textColor( 'Generated configuration file' ), highlight( codeceptJSConfigFile ) );
+                this.write( arrowRight, textColor( 'If this file does not work for you, delete it and then run:' ) );
+                this.write( textColor( '  codeceptjs init' ) );
+            } catch ( e ) {
+                this.write( iconError, textColor( 'Could not generate' ), highlight( codeceptJSConfigFile ) + '.', textColor( 'Please run the following command:' ) );
+                this.write( textColor( '  codeceptjs init' ) );
+                return false;
+            }
+
+        } else {
+
+            // Let's check needed dependencies
+            let config = {};
+            try {
+                const readF = promisify( readFile );
+                const content = await readF( codeceptJSConfigFile );
+                config = JSON.parse( content.toString() );
+
+                this.write( iconInfo, textColor( 'Read' ), highlight( codeceptJSConfigFile ) );
+            } catch ( e ) {
+                this.write( iconError, textColor( 'Could not read' ), highlight( codeceptJSConfigFile ) );
+                return false;
+            }
+
+            const cfgMaker = new ConfigMaker();
+
+            let needsToWriteConfig: boolean = ! cfgMaker.hasHelpersProperty( config );
+
+            if ( ! cfgMaker.hasCmdHelper( config ) ) {
+                cfgMaker.setCmdHelper( config );
+                needsToWriteConfig = true;
+            }
+
+            if ( ! cfgMaker.hasDbHelper( config ) ) {
+                cfgMaker.setDbHelper( config );
+                needsToWriteConfig = true;
+            }
+
+            if ( needsToWriteConfig ) {
+                try {
+                    await writeF( codeceptJSConfigFile, JSON.stringify( config ) );
+                    this.write( iconInfo, textColor( 'Updated configuration file' ), highlight( codeceptJSConfigFile ) );
+                } catch ( e ) {
+                    this.write( iconError, textColor( 'Error updating configuration file' ), highlight( codeceptJSConfigFile ) + '. Please check if it has DbHelper and CmdHelper configured.' );
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
 
     // private escapeJson( json: string ): string {
     //     return JSON.stringify( { _: json} ).slice( 6, -2 );
