@@ -1,12 +1,8 @@
-import { AbstractTestScript } from 'concordialang-types/dist/testscript/AbstractTestScript';
+import { AbstractTestScript } from 'concordialang-types';
 import { TestScriptGenerator } from "../src/TestScriptGenerator";
 import { CommandMapper } from '../src/CommandMapper';
 import { CODECEPTJS_COMMANDS } from '../src/Commands';
 
-/**
- * @author Matheus Eller Fagundes
- * @author Thiago Delgado Pinto
- */
 describe( 'TestScriptGeneratorTest', () => {
 
     let gen: TestScriptGenerator; // under test

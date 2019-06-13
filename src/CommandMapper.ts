@@ -3,8 +3,6 @@ import { ATSCommand } from "concordialang-types";
 
 /**
  * Command comparison
- *
- * @author Thiago Delgado Pinto
  */
 export enum CmdCmp {
 

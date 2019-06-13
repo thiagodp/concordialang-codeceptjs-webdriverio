@@ -1,12 +1,8 @@
 import { join, normalize } from 'path';
 import { vol, fs as memfs } from 'memfs';
-import { TestScriptExecutionResult, TestSuiteResult, TestMethodResult } from 'concordialang-types/dist/testscript/TestScriptExecution';
+import { TestScriptExecutionResult, TestSuiteResult, TestMethodResult } from 'concordialang-types';
 import { ReportConverter } from '../src/ReportConverter';
 
-/**
- * @author Matheus Eller Fagundes
- * @author Thiago Delgado Pinto
- */
 describe( 'ReportConverterTest', () => {
 
     // helper variables

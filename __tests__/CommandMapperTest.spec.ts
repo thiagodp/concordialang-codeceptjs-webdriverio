@@ -1,10 +1,7 @@
-import { ATSCommand } from 'concordialang-types/dist/testscript/AbstractTestScript';
+import { ATSCommand } from 'concordialang-types';
 import { CommandMapper } from '../src/CommandMapper';
 import { CODECEPTJS_COMMANDS } from '../src/Commands';
 
-/**
- * @author Thiago Delgado Pinto
- */
 describe( 'CommandMapperTest', () => {
 
     let cm: CommandMapper; // under test
