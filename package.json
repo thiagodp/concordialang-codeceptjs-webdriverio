@@ -36,7 +36,7 @@
   ],
   "scripts": {
     "build": "rimraf dist && tsc",
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "postversion": "git push && git push --tags",
     "postinstall": "((npm list -g npx) || (npm i --color=always -g npx)) && (npx selenium-standalone install || echo \"!!! PROBABLY JAVA IS NOT INSTALLED !!!\") && node dist/postinstall.js"
   },
@@ -57,26 +57,19 @@
       "codeceptjs",
       "webdriverio"
     ],
-    "file": "dist/CodeceptJS.js",
-    "class": "CodeceptJS",
+    "file": "dist/CodeceptJSWebDriverIO.js",
+    "class": "CodeceptJSWebDriverIO",
     "serve": "npx selenium-standalone start"
   },
   "dependencies": {
-    "chalk": "^2.4.2",
     "codeceptjs": "=1.2.1",
     "codeceptjs-cmdhelper": "^2.2.0",
     "codeceptjs-dbhelper": "^1.0.0",
-    "concordialang-plugin": "^0.4.0",
-    "concordialang-types": "^0.1.4",
+    "concordialang-codeceptjs-core": "^0.1.0",
     "database-js": "^3.0.9",
     "database-js-json": "^1.2.1",
-    "dedent-js": "^1.0.1",
-    "figures": "^2.0.0",
-    "log-symbols": "^2.2.0",
     "mocha": "=5.2.0",
     "mocha-multi": "=1.0.1",
-    "mustache": "^2.3.0",
-    "node-fs-extra": "^0.8.2",
     "selenium-standalone": "^6.16.0",
     "webdriverio": "=4.14.0"
   },
@@ -85,7 +78,6 @@
     "@types/jest": "^24.0.11",
     "@types/node": "^8.10.17",
     "jest": "^24.5.0",
-    "memfs": "^2.9.0",
     "rimraf": "^2.6.3",
     "ts-jest": "^24.0.0",
     "typescript": "^3.3.4000"
