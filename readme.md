@@ -1,4 +1,6 @@
+<!--
 [![Build Status](https://travis-ci.org/thiagodp/concordialang-codeceptjs-webdriverio.svg?branch=master)](https://travis-ci.org/thiagodp/concordialang-codeceptjs-webdriverio)
+-->
 [![npm version](https://badge.fury.io/js/concordialang-codeceptjs-webdriverio.svg)](https://badge.fury.io/js/concordialang-codeceptjs-webdriverio)
 [![GitHub last commit](https://img.shields.io/github/last-commit/thiagodp/concordialang-codeceptjs-webdriverio.svg)](https://github.com/thiagodp/concordialang-codeceptjs-webdriverio/releases)
 
