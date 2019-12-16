@@ -11,6 +11,8 @@
 
 Generates and executes test scripts for **web applications**. Uses [CodeceptJS](https://codecept.io) with [WebDriverIO](http://webdriver.io).
 
+## [What's New](https://github.com/thiagodp/concordialang-codeceptjs-webdriverio/releases)
+
 ## Installation
 
 Before installing:
