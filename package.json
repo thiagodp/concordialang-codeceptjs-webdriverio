@@ -38,7 +38,7 @@
     "build": "rimraf dist && tsc",
     "test": "jest --passWithNoTests",
     "postversion": "git push && git push --tags",
-    "postinstall": "((npm list -g npx) || (npm i --color=always -g npx)) && (npx list selenium-standalone || npx selenium-standalone install || echo \"!!! PROBABLY JAVA IS NOT INSTALLED !!!\") && node dist/postinstall.js"
+    "postinstall": "((npm list -g npx) || (npm i --color=always -g npx)) && (npx selenium-standalone install || echo \"!!! PROBABLY JAVA IS NOT INSTALLED !!!\") && node dist/postinstall.js"
   },
   "jest": {
     "transform": {
