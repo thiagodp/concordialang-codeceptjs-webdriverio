@@ -41,7 +41,7 @@
     "test": "jest --passWithNoTests",
     "preversion": "npm run build && npm run test",
     "postversion": "git push && git push --tags",
-    "postinstall": "((npm list -g npx) || (npm i --color=always -g npx)) && (npx selenium-standalone install || echo \"!!! PROBABLY JAVA IS NOT INSTALLED !!!\") && node dist/postinstall.js"
+    "postinstall": "node dist/in-ci.js || (((npm list -g npx) || (npm i --color=always -g npx)) && (npx selenium-standalone install || echo \"!!! PROBABLY JAVA IS NOT INSTALLED !!!\")) && node dist/postinstall.js"
   },
   "jest": {
     "transform": {
