@@ -39,6 +39,7 @@
     "switch:web": "npm uninstall concordialang-codeceptjs-core && npm i concordialang-codeceptjs-core",
     "build": "rimraf dist && tsc",
     "test": "jest --passWithNoTests",
+    "preversion": "npm run build && npm run test",
     "postversion": "git push && git push --tags",
     "postinstall": "((npm list -g npx) || (npm i --color=always -g npx)) && (npx selenium-standalone install || echo \"!!! PROBABLY JAVA IS NOT INSTALLED !!!\") && node dist/postinstall.js"
   },
