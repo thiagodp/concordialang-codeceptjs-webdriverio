@@ -66,20 +66,13 @@
     "serve": "npx selenium-standalone start"
   },
   "dependencies": {
-    "codeceptjs": "=1.2.1",
-    "codeceptjs-cmdhelper": "^2.2.0",
-    "codeceptjs-dbhelper": "^1.0.0",
-    "concordialang-codeceptjs-core": "^0.7.0",
-    "concordialang-plugin": "^0.7.0",
-    "database-js": "^3.0.9",
-    "database-js-json": "^1.2.1",
-    "mocha": "=5.2.0",
-    "mocha-multi": "=1.0.1",
+    "concordialang-codeceptjs-core": "^1.0.0",
+    "concordialang-plugin": "^1.0.0",
     "selenium-standalone": "^6.17.0",
     "webdriverio": "=4.14.0"
   },
   "devDependencies": {
-    "@types/node": "^13.11.1",
+    "@types/node": "^8.10.60",
     "rimraf": "^3.0.2",
     "typescript": "^3.8.3"
   }
