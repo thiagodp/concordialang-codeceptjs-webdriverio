@@ -66,7 +66,7 @@
     "serve": "npx selenium-standalone start"
   },
   "dependencies": {
-    "concordialang-codeceptjs-core": "^1.0.0",
+    "concordialang-codeceptjs-core": "^1.0.1",
     "concordialang-plugin": "^1.0.0",
     "selenium-standalone": "^6.17.0",
     "webdriverio": "=4.14.0"
