@@ -66,6 +66,7 @@
     "serve": "npx selenium-standalone start"
   },
   "dependencies": {
+    "codeceptjs": "^1.4.6",
     "concordialang-codeceptjs-core": "^1.1.0",
     "concordialang-plugin": "^1.0.0",
     "mocha": "^5.2.0",
