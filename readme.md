@@ -94,11 +94,9 @@ CodeceptJS reads its configuration from `codeceptjs.json`. This plug-in adds the
 See [concordialang-codeceptjs-core](https://github.com/thiagodp/concordialang-codeceptjs-core#documentation).
 
 
-## See Also
+## See also
 
-- [katalon-concordia](https://github.com/thiagodp/katalon-concordia): extension for Google Chrome and Mozilla Firefox.
-  Use it along with [Katalon Recorder](https://chrome.google.com/webstore/detail/katalon-recorder-selenium/ljdobmomdgdljniojadhoplhkpialdid) to record your actions while using your application and then convert the recording script into Concordia Language.
-  > Recommended to capture web elements' identifications without need to inspect them.
+- [katalon-concordia](https://github.com/thiagodp/katalon-concordia): extension for Google Chrome and Mozilla Firefox to convert recordings produced with [Katalon Recorder](https://chrome.google.com/webstore/detail/katalon-recorder-selenium/ljdobmomdgdljniojadhoplhkpialdid) into [Concordia Language](https://concordialang.org). It helps you to capture web elements' identification without inspecting them with the browser or looking into their source code.
 
 ## Dependencies
 
