@@ -40,9 +40,10 @@
     "switch:web": "npm run switch:un && npm i concordialang-plugin concordialang-codeceptjs-core",
     "build": "rimraf dist && tsc",
     "test": "echo \"No tests in this package. They are in the `core` package.\"",
+    "all": "npm run build && npm run test",
     "preversion": "npm run build && npm run test",
     "postversion": "git push && git push --tags",
-    "postinstall": "node dist/in-ci.js || (((npm list -g npx) || (npm i --color=always -g npx)) && (npx selenium-standalone install || echo \"!!! PROBABLY JAVA IS NOT INSTALLED !!!\")) && node dist/postinstall.js"
+    "postinstall": "node dist/in-ci.js || (((npm list -g npx) || (npm i --color=always -g npx)) && (npx selenium-standalone install || echo \"!!! PROBABLY JAVA IS NOT INSTALLED !!!\"))"
   },
   "jest": {
     "transform": {
@@ -67,17 +68,17 @@
   },
   "dependencies": {
     "codeceptjs": "^1.4.6",
-    "concordialang-codeceptjs-core": "^1.1.0",
+    "concordialang-codeceptjs-core": "^1.2.1",
     "concordialang-plugin": "^1.0.0",
     "mocha": "^5.2.0",
     "mocha-multi": "^1.1.3",
     "mochawesome": "^3.1.2",
-    "selenium-standalone": "^6.17.0",
+    "selenium-standalone": "^6.18.0",
     "webdriverio": "=4.14.0"
   },
   "devDependencies": {
-    "@types/node": "^8.10.61",
+    "@types/node": "^8.10.62",
     "rimraf": "^3.0.2",
-    "typescript": "^3.9.3"
+    "typescript": "^3.9.7"
   }
 }
