@@ -77,8 +77,8 @@
     "webdriverio": "=4.14.0"
   },
   "devDependencies": {
-    "@types/node": "^8.10.62",
+    "@types/node": "^8.10.66",
     "rimraf": "^3.0.2",
-    "typescript": "^3.9.7"
+    "typescript": "^3.9.9"
   }
 }

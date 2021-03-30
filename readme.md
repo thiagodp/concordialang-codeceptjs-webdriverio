@@ -145,6 +145,4 @@ See [concordialang-codeceptjs-core](https://github.com/thiagodp/concordialang-co
 
 ## License
 
-![AGPL](https://www.gnu.org/graphics/agplv3-88x31.png) © [Thiago Delgado Pinto](https://github.com/thiagodp)
-
-[GNU Affero General Public License version 3](LICENSE.txt)
+[![AGPL](https://www.gnu.org/graphics/agplv3-88x31.png)](LICENSE.txt) © [Thiago Delgado Pinto](https://github.com/thiagodp)
