@@ -105,13 +105,13 @@ See [concordialang-codeceptjs-core](https://github.com/thiagodp/concordialang-co
 - Compatible with Concordia `2.x`.
 - No global packages nor changes made to your `package.json` (except for the own plugin).
 - Installed packages:
-  | name                | version |
-  | ------------------- | ------- |
-  | webdriverio         | `4.x`   |
-  | selenium-standalone | latest  |
-  | mocha				| ^5.2.0  |
-  | mocha-multi         | ^1.1.3  |
-  | mochawesome         | ^3.1.2  |
+  | name                | version 2.0-2.2 | version 2.3+ |
+  | ------------------- | --------------- | ------------ |
+  | webdriverio         | 4.x             | 4.x          |
+  | selenium-standalone | latest          | latest       |
+  | mocha				| 5.x             | 7.x          |
+  | mocha-multi         | 1.x             | 1.x          |
+  | mochawesome         | 3.x             | 6.x          |
 
 - See [concordialang-codeceptjs-core](https://github.com/thiagodp/concordialang-codeceptjs-core) for more packages installed.
 
