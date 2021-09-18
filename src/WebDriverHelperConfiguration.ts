@@ -5,7 +5,7 @@ export class WebDriverHelperConfiguration implements HelperConfiguration {
 
     constructor(
         public readonly _require: string = './node_modules/codeceptjs/lib/helper/WebDriver',
-        private readonly _browser: any = 'chrome',
+        private readonly _browser: any = 'firefox',
         private readonly _url: string = 'http://localhost'
      ) {
     }
@@ -34,8 +34,8 @@ export class WebDriverHelperConfiguration implements HelperConfiguration {
 			"windowSize": "maximize",
 			"smartWait": 5000,
 			"host": "127.0.0.1",
-      		"port": 9515, /* or use 4444 */
-			"path": "/",
+      		"port": 4444,
+			"path": "/wd/hub",
 			"restart": false,
 			"desiredCapabilities": {
 				"chromeOptions": {

@@ -1,6 +1,6 @@
 {
   "name": "concordialang-codeceptjs-webdriverio",
-  "version": "2.4.0",
+  "version": "2.4.1",
   "description": "Concordia Language plug-in to generate test scripts for CodeceptJS with WebDriverIO",
   "license": "AGPL-3.0",
   "readme": "readme.md",
@@ -74,6 +74,7 @@
   "devDependencies": {
     "@types/node": "^8.10.66",
     "rimraf": "^3.0.2",
-    "typescript": "^3.9.10"
+    "typescript": "^3.9.10",
+    "webdriverio": "^7.12.5"
   }
 }

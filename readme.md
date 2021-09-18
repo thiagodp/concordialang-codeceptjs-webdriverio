@@ -51,13 +51,13 @@ CodeceptJS reads its configuration from `codeceptjs.json`. This plug-in adds the
 
 	"helpers": {
 		"WebDriver": {
-			"browser": "chrome",
+			"browser": "firefox",
 			"url": "http://localhost",
 			"windowSize": "maximize",
 			"smartWait": 5000,
 			"host": "127.0.0.1",
-      		"port": 9515, /* or use 4444 */
-			"path": "/",
+      		"port": 4444,
+			"path": "/wd/hub",
       		"restart": false,
 			"desiredCapabilities": {
         		"chromeOptions": {

@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.WebDriverHelperConfiguration = void 0;
 class WebDriverHelperConfiguration {
-    constructor(_require = './node_modules/codeceptjs/lib/helper/WebDriver', _browser = 'chrome', _url = 'http://localhost') {
+    constructor(_require = './node_modules/codeceptjs/lib/helper/WebDriver', _browser = 'firefox', _url = 'http://localhost') {
         this._require = _require;
         this._browser = _browser;
         this._url = _url;
@@ -30,8 +30,8 @@ class WebDriverHelperConfiguration {
             "windowSize": "maximize",
             "smartWait": 5000,
             "host": "127.0.0.1",
-            "port": 9515,
-            "path": "/",
+            "port": 4444,
+            "path": "/wd/hub",
             "restart": false,
             "desiredCapabilities": {
                 "chromeOptions": {
