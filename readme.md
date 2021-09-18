@@ -1,8 +1,5 @@
-<!--
-[![Build Status](https://travis-ci.org/thiagodp/concordialang-codeceptjs-webdriverio.svg?branch=master)](https://travis-ci.org/thiagodp/concordialang-codeceptjs-webdriverio)
--->
-[![npm version](https://badge.fury.io/js/concordialang-codeceptjs-webdriverio.svg)](https://badge.fury.io/js/concordialang-codeceptjs-webdriverio)
-[![GitHub last commit](https://img.shields.io/github/last-commit/thiagodp/concordialang-codeceptjs-webdriverio.svg)](https://github.com/thiagodp/concordialang-codeceptjs-webdriverio/releases)
+[![npm version](https://img.shields.io/npm/v/concordialang-codeceptjs-webdriverio.svg?style=for-the-badge&color=green&label=NPM)](https://badge.fury.io/js/concordialang-codeceptjs-webdriverio)
+[![GitHub last commit](https://img.shields.io/github/last-commit/thiagodp/concordialang-codeceptjs-webdriverio.svg?style=for-the-badge)](https://github.com/thiagodp/concordialang-codeceptjs-webdriverio/releases)
 
 
 # concordialang-codeceptjs-webdriverio
@@ -45,19 +42,28 @@ concordia --plugin codeceptjs-webdriverio
 
 ## Configuration file
 
-CodeceptJS reads its configuration from `codeceptjs.json`. This plug-in adds the `"WebDriverIO"` to the property `helpers` with a basic configuration. **Please see [WebDriver Configuration](https://codecept.io/helpers/WebDriver/#configuration) for details on how to extend it.**
+CodeceptJS reads its configuration from `codeceptjs.json`. This plug-in adds the `"WebDriver"` to the property `helpers` with a basic configuration. **Please see [WebDriver Configuration](https://codecept.io/helpers/WebDriver/#configuration) for details on how to extend it.**
 
-**Version 2** adds `"WebDriverIO"` with the following configuration:
+**Version 2** adds the property `"WebDriver"` with the following configuration:
 
 ```json
 {
 
 	"helpers": {
-		"WebDriverIO": {
+		"WebDriver": {
 			"browser": "chrome",
 			"url": "http://localhost",
 			"windowSize": "maximize",
-			"smartWait": 5000
+			"smartWait": 5000,
+			"host": "127.0.0.1",
+      		"port": 9515, /* or use 4444 */
+			"path": "/",
+      		"restart": false,
+			"desiredCapabilities": {
+        		"chromeOptions": {
+          			"args": [ /*"--headless",*/ "--disable-gpu", "--no-sandbox" ]
+        		}
+      		}
 		}
 	}
 }
@@ -88,60 +94,13 @@ CodeceptJS reads its configuration from `codeceptjs.json`. This plug-in adds the
 - You can change the value of the property `browser` to the desired browser to test, *e.g.*, `"firefox"`.
 - [See more options](https://codecept.io/helpers/WebDriver/#webdriver).
 
-
 ## Supported CodeceptJS Commands
 
 See [concordialang-codeceptjs-core](https://github.com/thiagodp/concordialang-codeceptjs-core#documentation).
 
-
 ## See also
 
 - [katalon-concordia](https://github.com/thiagodp/katalon-concordia): extension for Google Chrome and Mozilla Firefox to convert recordings produced with [Katalon Recorder](https://chrome.google.com/webstore/detail/katalon-recorder-selenium/ljdobmomdgdljniojadhoplhkpialdid) into [Concordia Language](https://concordialang.org). It helps you to capture web elements' identification without inspecting them with the browser or looking into their source code.
-
-## Dependencies
-
-### Version 2.x
-
-- Compatible with Concordia `2.x`.
-- No global packages nor changes made to your `package.json` (except for the own plugin).
-- Installed packages:
-  | name                | version 2.0-2.2 | version 2.3+ |
-  | ------------------- | --------------- | ------------ |
-  | webdriverio         | 4.x             | 4.x          |
-  | selenium-standalone | latest          | latest       |
-  | mocha				| 5.x             | 7.x          |
-  | mocha-multi         | 1.x             | 1.x          |
-  | mochawesome         | 3.x             | 6.x          |
-
-- See [concordialang-codeceptjs-core](https://github.com/thiagodp/concordialang-codeceptjs-core) for more packages installed.
-
-
-### Version 1.x
-
-- Compatible with Concordia `1.x`.
-- **No global packages nor changes made to your `package.json` (except for the own plugin).**
-- Install the same packages as version `0.x`, but locally.
-
-### Version 0.x
-
-- Compatible with Concordia `0.x`
-- Package installed globally:
-  | name                 | version  |
-  | -------------------- | -------- |
-  | codeceptjs           | `1.2.1`  |
-  | webdriverio          | `4.14.0` |
-  | selenium-standalone  | latest   |
-- Packages installed as `devDependencies` in your `package.json`:
-  | name                 | version |
-  | -------------------- | ------- |
-  | codeceptjs           | `1.2.1` |
-  | mocha                | `5.2.0` |
-  | mocha-multi          | `1.0.1` |
-  | codeceptjs-cmdhelper | latest  |
-  | codeceptjs-dbhelper  | latest  |
-  | database-js          | latest  |
-  | database-js-json     | latest  |
-
 
 ## License
 

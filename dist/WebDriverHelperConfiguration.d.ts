@@ -1,6 +1,6 @@
 import { HelperConfiguration } from "concordialang-codeceptjs-core";
 import { TestScriptExecutionOptions } from "concordialang-plugin";
-export declare class WebDriverIOHelperConfiguration implements HelperConfiguration {
+export declare class WebDriverHelperConfiguration implements HelperConfiguration {
     readonly _require: string;
     private readonly _browser;
     private readonly _url;
