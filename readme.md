@@ -4,43 +4,52 @@
 
 # concordialang-codeceptjs-webdriverio
 
-> 🔌 Concordia Compiler Plug-in for CodeceptJS with WebDriverIO
+> 🔌 Concordia compiler plug-in for CodeceptJS with WebDriverIO
 
-Generates and executes test scripts for **web applications**. Uses [CodeceptJS](https://codecept.io) with [WebDriverIO](http://webdriver.io).
+Generates and executes test scripts [CodeceptJS](https://codecept.io) with [WebDriverIO](http://webdriver.io), aiming to verify **web** applications.
 
-## [What's New](https://github.com/thiagodp/concordialang-codeceptjs-webdriverio/releases)
+## Install
 
-## Compatibility
-- **Version 2.x** works with [Concordia](https://concordialang.org) `2.0.0` or above.
-- **Version 1.x** works with [Concordia](https://concordialang.org) `1.0.0` or above.
+Requirements:
 
-## Installation
+- [Java 8 or above](https://www.java.com/download/), since WebDriverIO uses Selenium which requires Java.
+- [NodeJS](https://nodejs.org/) 12 or later.
+- [Concordia Compiler](https://concordialang.org) 2.
 
-1. Make sure you have [Java 8 or above](https://www.java.com/download/) installed. WebDriverIO uses Selenium that requires Java.
-2. Access your application's folder from the terminal/console.
-3. Install it via Concordia or NPM:
 
-	a) Installation via [Concordia](https://concordialang.org):
+Installation via Concordia Compiler:
 
-	```bash
-	concordia --plugin-install codeceptjs-webdriverio
-	```
+```bash
+concordia --plugin-install codeceptjs-webdriverio
+```
 
-	b) Installation via NPM:
+Installation via NPM:
 
-	```bash
-	npm i -D concordialang-codeceptjs-webdriverio
-	```
+```bash
+npm i -D concordialang-codeceptjs-webdriverio
+```
+
+Note: You can also use PNPM or Yarn.
+
 
 ## Execution
 
-Execute it with the [Concordia Compiler](https://github.com/thiagodp/concordialang). Example:
+**Step 1**: Open the testing server
+
+> Since WebDriverIO uses Selenium, it requires to start Selenium before running the tests.
 
 ```bash
-concordia --plugin codeceptjs-webdriverio
+npx concordia --plugin-serve codeceptjs-webdriverio
+```
+**Step 2**: Run
+
+```bash
+npx concordia -p codeceptjs-webdriverio
 ```
 
-## Configuration file
+## Documentation
+
+### Configuration file
 
 CodeceptJS reads its configuration from `codeceptjs.json`. This plug-in adds the `"WebDriver"` to the property `helpers` with a basic configuration. **Please see [WebDriver Configuration](https://codecept.io/helpers/WebDriver/#configuration) for details on how to extend it.**
 
@@ -94,13 +103,13 @@ CodeceptJS reads its configuration from `codeceptjs.json`. This plug-in adds the
 - You can change the value of the property `browser` to the desired browser to test, *e.g.*, `"firefox"`.
 - [See more options](https://codecept.io/helpers/WebDriver/#webdriver).
 
-## Supported CodeceptJS Commands
-
-See [concordialang-codeceptjs-core](https://github.com/thiagodp/concordialang-codeceptjs-core#documentation).
 
 ## See also
 
-- [katalon-concordia](https://github.com/thiagodp/katalon-concordia): extension for Google Chrome and Mozilla Firefox to convert recordings produced with [Katalon Recorder](https://chrome.google.com/webstore/detail/katalon-recorder-selenium/ljdobmomdgdljniojadhoplhkpialdid) into [Concordia Language](https://concordialang.org). It helps you to capture web elements' identification without inspecting them with the browser or looking into their source code.
+- [katalon-concordia](https://github.com/thiagodp/katalon-concordia): Browser extension that converts [Katalon Recorder](https://chrome.google.com/webstore/detail/katalon-recorder-selenium/ljdobmomdgdljniojadhoplhkpialdid)'s recordings into [Concordia Language](https://concordialang.org). Very useful to capture web elements' identification without inspecting them with the browser or looking into their source code.
+
+- [Integration with CodeceptJS](https://github.com/thiagodp/concordialang-codeceptjs-core#documentation).
+
 
 ## License
 

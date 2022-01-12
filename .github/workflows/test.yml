@@ -1,0 +1,38 @@
+name: test
+on:
+  pull_request:
+    branches:
+      - "*"
+  push:
+    branches:
+      - "*"
+jobs:
+  test:
+    name: test
+    runs-on: ${{ matrix.os }}
+    env:
+      MOZ_HEADLESS: 1
+      DISPLAY: :0
+      CONCURRENTLY_KILL_OTHERS: true
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        node-version: [12, 14, 16]
+    steps:
+      - uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      - uses: actions/setup-java@v2
+        with:
+          distribution: zulu
+          java-version: 8
+      - run: |
+          echo "Running on branch \"${{ github.ref_name }}\""
+          git clone https://github.com/concordialang/hello-world.git check
+          cd check
+          npm init --yes
+          npm i -D concordialang
+          npm i -D "https://github.com/thiagodp/concordialang-codeceptjs-webdriverio.git#${{ github.ref_name }}"
+          npm i -D concurrently
+          npx concurrently --success=first "npx concordia --plugin-serve codeceptjs-webdriverio" "(sleep 5 || timeout 5 > NUL) && npx concordia features --headless -p codeceptjs-webdriverio"
