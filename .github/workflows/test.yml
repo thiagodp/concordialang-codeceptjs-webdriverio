@@ -34,5 +34,5 @@ jobs:
           npm init --yes
           npm i -D concordialang
           npm i -D "https://github.com/thiagodp/concordialang-codeceptjs-webdriverio.git#${{ github.ref_name }}"
-          npm i -D concurrently
-          npx concurrently --success=first "npx concordia --plugin-serve codeceptjs-webdriverio" "(sleep 5 || timeout 5 > NUL) && npx concordia features --headless -p codeceptjs-webdriverio"
+          npm i -D concurrently sleepx
+          npx concurrently "npx concordia --plugin-serve codeceptjs-webdriverio" "sleepx 5 && npx concordia features --headless -p codeceptjs-webdriverio" --success=first
